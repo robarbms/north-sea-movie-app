@@ -1,4 +1,4 @@
-import { Text, View, type TextProps, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 
 export default function Showtime(props: any) {
     return (
@@ -11,8 +11,9 @@ export default function Showtime(props: any) {
 const styles = StyleSheet.create({
     container: {
         padding: 4,
-        backgroundColor: '#f0f0f0',
+        backgroundColor: "rgba(255, 255, 255, 0.5)",
         color: "black",
+        borderRadius: 2,
     },
     text: {
         fontSize: 10,

@@ -1,6 +1,12 @@
-import { Text, View, type TextProps, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import Showtime from './Showtime';
 
+
+const minutesToString = (minutes: number) => {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    return `${hours}h ${remainingMinutes}m`;
+}
 
 export default function Showtimes(props: any) {
     const { showtimes } = props;
@@ -8,6 +14,7 @@ export default function Showtimes(props: any) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Showtimes</Text>
+            <View><Text style={styles.runtime}>Runtime: {minutesToString(props.duration)}</Text></View>
             <View style={styles.showtimes}>
                 {showtimes && Array.isArray(showtimes) && showtimes.length > 0 && showtimes.map((showtime, index) => <Showtime key={index} showtime={showtime}/>)}
             </View>
@@ -23,12 +30,15 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         color: "#fff",
-        marginBottom: 5,
     },
     showtimes: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         gap: 10,
-        marginBottom: 20,
-    }
+        marginBottom: 10,
+    },
+    runtime: {
+        color: "rgba(255, 255, 255, 0.5)",
+        paddingBottom: 10,
+    },
 });
